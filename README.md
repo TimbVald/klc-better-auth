@@ -1,6 +1,6 @@
-# MEMS-GMAO
+# MEMS-AUTH
 
-Ce projet est une application de gestion de maintenance assistée par ordinateur (GMAO) construite avec la [T3 Stack](https://create.t3.gg/).
+Ce projet est une application d'authentification construite avec la [T3 Stack](https://create.t3.gg/).
 
 ## 🚀 Fonctionnalités
 
