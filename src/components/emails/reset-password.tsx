@@ -13,7 +13,13 @@ import {
   Tailwind,
 } from '@react-email/components';
 
-const PasswordResetEmail = (props) => {
+interface PasswordResetEmailProps {
+    userName: string;
+    userEmail: string;
+    resetUrl: string;
+}
+
+const PasswordResetEmail = (props: PasswordResetEmailProps) => {
   return (
     <Html lang="fr" dir="ltr">
       <Head />
@@ -34,7 +40,7 @@ const PasswordResetEmail = (props) => {
             {/* Main Content */}
             <Section className="mb-[32px]">
               <Text className="text-[16px] text-gray-700 mb-[16px] leading-[24px]">
-                Bonjour {props.firstName},
+                Bonjour {props.userName},
               </Text>
               
               <Text className="text-[16px] text-gray-700 mb-[16px] leading-[24px]">
@@ -107,7 +113,8 @@ const PasswordResetEmail = (props) => {
 };
 
 PasswordResetEmail.PreviewProps = {
-  firstName: "Jean",
+  userName: "Jean",
+  userEmail: "jean@gmail.com",
   resetUrl: "https://monapp.com/reset-password?token=abc123xyz789",
 };
 
