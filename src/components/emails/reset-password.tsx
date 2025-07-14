@@ -20,6 +20,7 @@ interface PasswordResetEmailProps {
 }
 
 const PasswordResetEmail = (props: PasswordResetEmailProps) => {
+    const { userName, userEmail, resetUrl } = props;
   return (
     <Html lang="fr" dir="ltr">
       <Head />
@@ -40,11 +41,11 @@ const PasswordResetEmail = (props: PasswordResetEmailProps) => {
             {/* Main Content */}
             <Section className="mb-[32px]">
               <Text className="text-[16px] text-gray-700 mb-[16px] leading-[24px]">
-                Bonjour {props.userName},
+                Bonjour {userName},
               </Text>
               
               <Text className="text-[16px] text-gray-700 mb-[16px] leading-[24px]">
-                Nous avons reçu une demande de réinitialisation de mot de passe pour votre compte. 
+                Nous avons reçu une demande de réinitialisation de mot de passe pour votre compte {userEmail}. 
                 Si vous êtes à l'origine de cette demande, cliquez sur le bouton ci-dessous pour 
                 créer un nouveau mot de passe.
               </Text>
@@ -56,7 +57,7 @@ const PasswordResetEmail = (props: PasswordResetEmailProps) => {
               {/* Reset Button */}
               <Section className="text-center mb-[32px]">
                 <Button
-                  href={props.resetUrl}
+                  href={resetUrl}
                   className="bg-blue-600 text-white px-[32px] py-[16px] rounded-[8px] text-[16px] font-semibold no-underline box-border hover:bg-blue-700 transition-colors"
                 >
                   Réinitialiser mon mot de passe
@@ -68,8 +69,8 @@ const PasswordResetEmail = (props: PasswordResetEmailProps) => {
               </Text>
               
               <Text className="text-[14px] text-blue-600 mb-[24px] break-all">
-                <Link href={props.resetUrl} className="text-blue-600 underline">
-                  {props.resetUrl}
+                <Link href={resetUrl} className="text-blue-600 underline">
+                  {resetUrl}
                 </Link>
               </Text>
 
@@ -110,12 +111,6 @@ const PasswordResetEmail = (props: PasswordResetEmailProps) => {
       </Tailwind>
     </Html>
   );
-};
-
-PasswordResetEmail.PreviewProps = {
-  userName: "Jean",
-  userEmail: "jean@gmail.com",
-  resetUrl: "https://monapp.com/reset-password?token=abc123xyz789",
 };
 
 export default PasswordResetEmail;
