@@ -58,7 +58,7 @@ const PasswordResetEmail = (props: PasswordResetEmailProps) => {
               <Section className="text-center mb-[32px]">
                 <Button
                   href={resetUrl}
-                  className="bg-blue-600 text-white px-[32px] py-[16px] rounded-[8px] text-[16px] font-semibold no-underline box-border hover:bg-blue-700 transition-colors"
+                  className="bg-blue-600 text-white px-[32px] py-[16px] rounded-[8px] text-[16px] font-semibold no-underline box-border transition-colors"
                 >
                   Réinitialiser mon mot de passe
                 </Button>
@@ -94,13 +94,13 @@ const PasswordResetEmail = (props: PasswordResetEmailProps) => {
             {/* Footer */}
             <Section className="border-t border-gray-200 pt-[24px] text-center">
               <Text className="text-[14px] text-gray-600 mb-[8px]">
-                Cet email a été envoyé par <strong>MonApp</strong>
+                Cet email a été envoyé par <strong>KLC Computing Inc.</strong>
               </Text>
               <Text className="text-[12px] text-gray-500 m-0 mb-[8px]">
                 123 Rue de la Technologie, Yaoundé, Cameroun
               </Text>
               <Text className="text-[12px] text-gray-500 m-0">
-                © 2025 MonApp. Tous droits réservés. | 
+                © 2025 KLC Computing Inc. Tous droits réservés. | 
                 <Link href="#" className="text-gray-500 underline ml-[4px]">
                   Se désabonner
                 </Link>
