@@ -34,7 +34,6 @@ import Link from "next/link"
 
 const formSchema = z.object({
   email: z.string().email(),
-  password: z.string().min(8),
 })
 
 export function ForgotPasswordForm({
@@ -47,19 +46,20 @@ export function ForgotPasswordForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
-      password: "",
     },
   })
 
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true)
-    const { success, message } = await signIn(values.email, values.password)
-    if (success) {
-      toast.success(message as string)
-    //   router.push("/dashboard")
+    const { error } = await authClient.forgetPassword({
+        email: values.email,
+        redirectTo: `${process.env.NEXT_PUBLIC_APP_URL}/reset-password`,
+      });
+    if (!error) {
+      toast.success("Un lien de réinitialisation a été envoyé à votre email")
     } else {
-      toast.error(message as string)
+      toast.error(error?.message as string)
     }
     setIsLoading(false)
   }
