@@ -30,6 +30,7 @@ import { useRouter } from "next/navigation"
 import { authClient } from "@/lib/auth-client"
 import { useState } from "react"
 import { Loader2 } from "lucide-react"
+import Link from "next/link"
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -148,12 +149,12 @@ export function LoginForm({
                           </FormItem>
                         )}
                       />
-                      <a
-                        href="#"
+                      <Link
+                        href="/forgot-password"
                         className="ml-auto text-sm underline-offset-4 hover:underline"
                       >
                         Mot de passe oublié ?
-                      </a>
+                      </Link>
                     </div>
 
                   </div>
@@ -163,9 +164,9 @@ export function LoginForm({
                 </div>
                 <div className="text-center text-sm">
                   Vous n&apos;avez pas de compte ?{" "}
-                  <a href="/signup" className="underline underline-offset-4">
+                  <Link href="/signup" className="underline underline-offset-4">
                     Inscription
-                  </a>
+                  </Link>
                 </div>
               </div>
             </form>

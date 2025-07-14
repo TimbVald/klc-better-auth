@@ -16,11 +16,11 @@ import {
 interface PasswordResetEmailProps {
     userName: string;
     userEmail: string;
-    resetUrl: string;
+    token: string;
 }
 
 const PasswordResetEmail = (props: PasswordResetEmailProps) => {
-    const { userName, userEmail, resetUrl } = props;
+    const { userName, userEmail, token } = props;
   return (
     <Html lang="fr" dir="ltr">
       <Head />
@@ -45,7 +45,7 @@ const PasswordResetEmail = (props: PasswordResetEmailProps) => {
               </Text>
               
               <Text className="text-[16px] text-gray-700 mb-[16px] leading-[24px]">
-                Nous avons reçu une demande de réinitialisation de mot de passe pour votre compte {userEmail}. 
+                Nous avons reçu une demande de réinitialisation de mot de passe pour votre compte via votre email {userEmail}. 
                 Si vous êtes à l'origine de cette demande, cliquez sur le bouton ci-dessous pour 
                 créer un nouveau mot de passe.
               </Text>
@@ -57,7 +57,7 @@ const PasswordResetEmail = (props: PasswordResetEmailProps) => {
               {/* Reset Button */}
               <Section className="text-center mb-[32px]">
                 <Button
-                  href={resetUrl}
+                  href={`${process.env.NEXT_PUBLIC_APP_URL}/reset-password?token=${token}`}
                   className="bg-blue-600 text-white px-[32px] py-[16px] rounded-[8px] text-[16px] font-semibold no-underline box-border hover:bg-blue-700 transition-colors"
                 >
                   Réinitialiser mon mot de passe
@@ -69,8 +69,8 @@ const PasswordResetEmail = (props: PasswordResetEmailProps) => {
               </Text>
               
               <Text className="text-[14px] text-blue-600 mb-[24px] break-all">
-                <Link href={resetUrl} className="text-blue-600 underline">
-                  {resetUrl}
+                <Link href={`${process.env.NEXT_PUBLIC_APP_URL}/reset-password?token=${token}`} className="text-blue-600 underline">
+                  {`${process.env.NEXT_PUBLIC_APP_URL}/reset-password?token=${token}`}
                 </Link>
               </Text>
 
