@@ -6,6 +6,7 @@ import { PrismaClient } from "@prisma/client";
 import { nextCookies } from "better-auth/next-js";
 import { env } from "@/env";
 import ForgotPasswordEmail from "@/components/emails/reset-password";
+import { organization } from "better-auth/plugins"
  
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -24,7 +25,7 @@ export const auth = betterAuth({
         enabled: true,
         sendResetPassword: async ({user, url}, request) => {
              resend.emails.send({
-                from: "onboarding@resend.dev",
+                from: "CabrelKL@resend.dev",
                 to: user.email,
                 subject: "Réinitialisation de mot de passe",
                 react: ForgotPasswordEmail({ userName: user.name, userEmail: user.email, resetUrl: url }),
@@ -35,5 +36,5 @@ export const auth = betterAuth({
 
         provider: "postgresql", // or "mysql", "postgresql", ...etc
     }),
-    plugins: [nextCookies()]
+    plugins: [nextCookies(), organization() ]
 });
